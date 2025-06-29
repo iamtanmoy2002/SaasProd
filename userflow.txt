@@ -1,0 +1,72 @@
+graph TD
+    A[User Enters HarmonyHub] --> B{User Type?}
+    B -->|Artist| C[Artist Dashboard]
+    B -->|Fan| D[Fan Dashboard]
+    
+    %% Artist Flow
+    C --> C1[Upload Music]
+    C --> C2[Set Subscription Tiers]
+    C --> C3[Sell Beats/Samples]
+    C --> C4[View Analytics]
+    C --> C5[Manage Fan Messages]
+    
+    %% Fan Flow
+    D --> D1[Browse Music Library]
+    D --> D2[Create/Edit Playlists]
+    D --> D3[Subscribe to Artists]
+    D --> D4[Purchase Beats/Samples]
+    D --> D5[Send Gifts to Artists]
+    D --> D6[Message Artists]
+    
+    %% Music Player Flow
+    D1 --> E[Music Player]
+    D2 --> E
+    E --> E1[Play/Pause Track]
+    E --> E2[Skip Track]
+    E --> E3[Add to Playlist]
+    E --> E4[Like Track]
+    E1 --> F[Update Listening History]
+    E2 --> F
+    E3 --> F
+    E4 --> F
+    F --> G[Generate Recommendations]
+    G --> D
+    
+    %% Subscription Flow
+    D3 --> H{Choose Tier?}
+    H -->|Basic| I1[Access Standard Content]
+    H -->|Premium| I2[Access Exclusive Content]
+    H -->|VIP| I3[Access All Content + Priority Messaging]
+    I1 --> J[Monthly Payment]
+    I2 --> J
+    I3 --> J
+    J --> K[Update Subscription Status]
+    K --> D
+    
+    %% Marketplace Flow
+    C3 --> L[List Beat/Sample for Sale]
+    L --> M[Set Price & Details]
+    D4 --> N[Browse Marketplace]
+    N --> O{Purchase Item?}
+    O -->|Yes| P[Complete Transaction]
+    O -->|No| N
+    P --> Q1[Fan: Add to Library]
+    P --> Q2[Artist: Receive Payment]
+    
+    %% Messaging System
+    C5 --> R[View & Respond to Messages]
+    D6 --> S[Send Message to Artist]
+    S --> T{Artist Subscription Required?}
+    T -->|Yes| U{Is Subscribed?}
+    T -->|No| V[Deliver Message]
+    U -->|Yes| V
+    U -->|No| W[Prompt to Subscribe]
+    W --> D3
+    V --> R
+    
+    %% Gift System
+    D5 --> X[Select Gift Amount]
+    X --> Y[Add Optional Message]
+    Y --> Z[Complete Gift Transaction]
+    Z --> Z1[Fan: Recognition]
+    Z --> Z2[Artist: Receive Gift]
